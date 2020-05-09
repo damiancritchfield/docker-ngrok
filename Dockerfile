@@ -28,17 +28,13 @@ RUN cd ~/ngrok && \
     -httpsAddr=":18082" \
     -tunnelAddr=":18083"' > start_ngrokd.sh
 
+ADD ngrok.cfg ~/ngrok/bin/
+
 RUN cd ~/ngrok && \
     echo '#!/bin/bash'"\n" \
     'workdir=$(cd $(dirname $0); pwd)'"\n" \
     'cd $workdir'"\n" \
-    './bin/ngrokd \
-    -tlsKey="assets/server/tls/snakeoil.key" \
-    -tlsCrt="assets/server/tls/snakeoil.crt" \
-    -domain="tunnel.liaolangsheng.com" \
-    -httpAddr=":18081" \
-    -httpsAddr=":18082" \
-    -tunnelAddr=":18083"' > start_ngrok.sh
+    './bin/ngrok -config=bin/ngrok.cfg start-all' > start_ngrok.sh
 
 RUN  cd ~/ngrok && chmod +x start_ngrokd.sh
 
