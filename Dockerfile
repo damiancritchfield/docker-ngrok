@@ -29,6 +29,7 @@ RUN cd ~/ngrok && \
     -tunnelAddr=":18083"' > start_ngrokd.sh
 
 ADD ngrok.cfg /root/ngrok/bin/
+ADD entrypoint.sh /root/
 
 RUN cd ~/ngrok && \
     echo '#!/bin/bash'"\n" \
@@ -36,8 +37,9 @@ RUN cd ~/ngrok && \
     'cd $workdir'"\n" \
     './bin/ngrok -config=bin/ngrok.cfg start-all' > start_ngrok.sh
 
-RUN  cd ~/ngrok && chmod +x start_ngrokd.sh
+RUN cd ~/ngrok && chmod +x start_ngrokd.sh && chmod +x start_ngrok.sh
 
 EXPOSE 18081 18082 18083
 
-CMD ["/bin/sh", "-c", "~/ngrok/start_ngrokd.sh"]
+CMD ["server"]
+ENTRYPOINT ["/root/entrypoint.sh"]
