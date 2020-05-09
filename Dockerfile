@@ -28,7 +28,7 @@ RUN cd ~/ngrok && \
     -httpsAddr=":18082" \
     -tunnelAddr=":18083"' > start_ngrokd.sh
 
-ADD ngrok.cfg ~/ngrok/bin/
+ADD ngrok.cfg /root/ngrok/bin/
 
 RUN cd ~/ngrok && \
     echo '#!/bin/bash'"\n" \
