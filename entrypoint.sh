@@ -15,3 +15,5 @@ if [ "server" = "$1" ]; then
   echo run server
   /root/ngrok/start_ngrokd.sh
 fi
+
+$1

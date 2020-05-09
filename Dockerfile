@@ -38,6 +38,7 @@ RUN cd ~/ngrok && \
     './bin/ngrok -config=bin/ngrok.cfg start-all' > start_ngrok.sh
 
 RUN cd ~/ngrok && chmod +x start_ngrokd.sh && chmod +x start_ngrok.sh
+RUN chmod +x /root/entrypoint.sh
 
 EXPOSE 18081 18082 18083
 
