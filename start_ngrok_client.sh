@@ -1,3 +1,6 @@
-#! /bin/bash
+#!/bin/bash
 
-./ngrok -config=/root/ngrok-client/ngrok.cfg start-all
+workdir=$(cd $(dirname $0); pwd)
+cd $workdir
+
+./ngrok -config=ngrok.cfg start-all
