@@ -30,6 +30,7 @@ RUN cd ~/ngrok && \
 
 ADD ngrok.cfg /root/ngrok/bin/
 ADD entrypoint.sh /root/
+ADD start_ngrok_client.sh /root/ngrok/bin/
 
 RUN cd ~/ngrok && \
     echo '#!/bin/bash'"\n" \
