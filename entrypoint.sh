@@ -16,4 +16,4 @@ if [ "server" = "$1" ]; then
   /root/ngrok/start_ngrokd.sh
 fi
 
-$1
+/root/ngrok/start_ngrokd.sh
